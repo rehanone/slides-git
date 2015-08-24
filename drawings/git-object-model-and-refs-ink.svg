@@ -463,10 +463,10 @@
      inkscape:guide-bbox="true"
      inkscape:snap-grids="true"
      inkscape:snap-to-guides="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1535"
+     inkscape:window-height="876"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      showborder="false">
     <sodipodi:guide
@@ -762,7 +762,7 @@
              id="tspan9803"
              x="126.30011"
              y="-20.092175"
-             style="text-align:center;text-anchor:middle">local-dev</tspan></text>
+             style="text-align:center;text-anchor:middle">local-branch</tspan></text>
       </g>
       <g
          id="g9822"
