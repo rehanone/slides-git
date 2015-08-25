@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -57,10 +57,10 @@
 					<section>
 						<h2>Background with Git</h2>
 						<ul>
-							<li>Started tracking development of Mozilla Firefox in school.</li>
-							<li>Started using Mercurial when Firefox switched to it in 2006.</li>
-							<li>Learned Git and Mercurial as the war between them started heating up (Was backing Mercurial over Git).</li>
-							<li>Finally switched to Git in 2010 (Bacause of Git's superior handling of tags).</li>
+							<li>Started tracking development of Mozilla Firefox in school</li>
+							<li>Started using Mercurial when Firefox switched to it in 2006</li>
+							<li>Learned Git and Mercurial as the war between them started heating up (Was backing Mercurial over Git)</li>
+							<li>Finally switched to Git in 2010 (Because of Git's superior handling of tags)</li>
 						</ul>
                         <aside class="notes"></aside>
 					</section>
@@ -69,35 +69,24 @@
 				<section>
 					<h2>Why Are We Here?</h2>
 					<ul>
-						<li class="fragment">What is Git?</li>
-						<li class="fragment">Why should I care?</li>
-						<li class="fragment">How Git works?</li>
-						<li class="fragment">How will it make my life better?</li>
-						<li class="fragment">How I will improve the lives of my fellow code monkeys?</li>
+						<li>Why Version Control?</li>
+						<li>What is Git?</li>
+						<li>Why should I care?</li>
+						<li>How Git works?</li>
+						<li>How will it make my life better?</li>
+						<li>How I will improve the lives of my fellow code monkeys?</li>
 					</ul>
                     <aside class="notes"></aside>
 				</section>
 
 				<section>
-					<section>
-						<h2>What is Git?</h2>
-						<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-							&ldquo;Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.&rdquo;
-						</blockquote>
-						<small>Pro Git, Section: Git Internals</small>
-                        <aside class="notes"></aside>
-					</section>
-					<section>
-						<h2>What is Git?</h2>
-						<ul>
-							<li>A system to track the contents of a directory tree</li>
-							<li>A Distributed/Decentralized shared repository of objects</li>
-							<li>Has over 190 total commands</li>
-							<li>39 are for normal source control like use, called "the porcelain"</li>
-							<li>The rest are for low-level operations, called "the plumbing"</li>
-						</ul>
-                        <aside class="notes"></aside>
-					</section>
+					<h2>Why Version Control?</h2>
+					<ul>
+						<li>Allows you to iterate over your code while keeping checkpoints to roll back</li>
+						<li>Makes it trivial to share the codebase with other developers and collaborate</li>
+						<li>Supports multiple versions of code for different environments based on levels of testing &amp; confidence</li>
+					</ul>
+                    <aside class="notes">Multiple branches for DEV, UAT, and PROD environments</aside>
 				</section>
 
 				<section>
@@ -145,6 +134,27 @@
 					</table>
                     <aside class="notes"></aside>
 				</section>
+
+				<section>
+					<section>
+						<h2>What is Git?</h2>
+						<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+							&ldquo;Git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.&rdquo;
+						</blockquote>
+						<small>Pro Git, Section: Git Internals</small>
+                        <aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>What is Git?</h2>
+						<ul>
+							<li>A Distributed/Decentralized shared repository of objects</li>
+							<li>It is open-source and free to use</li>
+							<li>Takes a unique and open design approach towards version control</li>
+							<li>The openness of its design sometimes confuses people make them think that it is too difficult</li>
+						</ul>
+                        <aside class="notes"></aside>
+					</section>
+				</section>
 				
 				<section>
 					<section>
@@ -152,8 +162,8 @@
                         <aside class="notes"></aside>
 				    </section>
 					<section>
-						<h2>It is the hot new thing!</h2>
-						<p>Practically replaced SVN</p>
+						<h2>Git is the Future</h2>
+						<p>Practically replaced SVN and other proprietary solutions</p>
                         <aside class="notes"></aside>
 				    </section>
 					<section>
@@ -171,20 +181,24 @@
 					<section>
 						<h2>Git is Speed!</h2>
 						<ul>
-							<li>Git is orders of magnitude faster then other version control systems</li>
+							<li>Git is orders of magnitude faster than other version control systems</li>
 							<li>It is built for speed</li>
 						</ul>
-                        <aside class="notes"></aside>
+                        <aside class="notes">The speedy operations of git are partly because of their local nature</aside>
 				    </section>
 					<section>
 						<h2>The All Seeing Eye!</h2>
 						<ul>
 							<li>Nothing Gets Past its Watch!</li>
-							<li>Extreme safeguards against on-disk data corruption or bit rot.</li>
-							<li>Everyone has a copy of everything, less chance of accidental data lose.</li>
-							<li>Cryptographically immutable, makes malicious file tempering impossible without detection.</li>
+							<li>Extreme safeguards against on-disk data corruption</li>
+							<li>Everyone has a copy of everything, less chance of accidental data loss</li>
+							<li>Cryptographically immutable, makes malicious file tempering impossible without detection</li>
 						</ul>
-                        <aside class="notes"></aside>
+                        <aside class="notes">
+                            <ul>
+                                <li>Protection for unreliable file system and disk issues like bit rot, phantom writes, physical disk and controller integrity issues</li>
+                            </ul
+                        </aside>
 					</section>
 					<section>
 						<h2>Loves Branches</h2>
@@ -218,15 +232,17 @@
 
 				<section>
 					<h2>How Git Works</h2>
+					<p>A quick deep dive inside Git's mind</p>
                     <aside class="notes"></aside>
 				</section>
 
 				<section>
-					<h2>Everything is a Hash</h2>
-					<ul>
-						<li>A content addressable file system</li>
-						<li>160-bit hash computed from the contents of the given file</li>
-					</ul>
+				    <section>
+					    <h2>Everything is a Hash</h2>
+					    <ul>
+						    <li>A content addressable file system</li>
+						    <li>160-bit SHA1 hash computed from the contents of the given file</li>
+					    </ul>
 <pre><code data-trim contenteditable>
 % git hash-object App.scala
 545323645634654365436453646754746
@@ -236,11 +252,11 @@ drwxrwxr-x 7 ubuntu ubuntu 4096 Aug 19 03:56 .
 drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 04:22 ..
 -rw-rw-r-- 1 ubuntu ubuntu   92 Aug 19 03:56 5323645634654365436453646754746
 </code></pre>
-                    <aside class="notes">Content of the file determines its address in the object store</aside>
-				</section>
+                        <aside class="notes">Content of the file determines its address in the object store</aside>
+				    </section>
 
-				<section>
-					<h2>Working Directory</h2>
+				    <section>
+					    <h2>Working Directory</h2>
 <pre><code data-trim contenteditable>
 % ls -al hello-git/
 total 16
@@ -253,12 +269,12 @@ drwxrwxr-x 7 ubuntu ubuntu 4096 Aug 19 03:56 .git
 drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 04:22 src
 drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 04:22 target
 </code></pre>
-                    <aside class="notes"></aside>
-				</section>
+                        <aside class="notes"></aside>
+				    </section>
 
-				<section>
-					<h2>Git Under the Hood</h2>
-					<p>GIT_DIR</p>
+				    <section>
+					    <h2>Git Under the Hood</h2>
+					    <p>GIT_DIR</p>
 <pre><code data-trim contenteditable>
 % ls -al hello-git/.git/
 drwxrwxr-x 7 ubuntu ubuntu 4096 Aug 19 03:56 .
@@ -272,8 +288,9 @@ drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 03:56 info
 drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 03:56 objects
 drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 03:56 refs
 </code></pre>
-                    <aside class="notes"></aside>
-				</section>
+                        <aside class="notes"></aside>
+				    </section>
+    		    </section>
 
 				<section>
 					<h2>Storage Models</h2>
@@ -282,7 +299,7 @@ drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 03:56 refs
 				</section>
 
 				<section>
-					<h2>The Four Elements</h2>
+					<h2>The Four Elements of Aristotle</h2>
 					<img src="http://earthwaterfireair.com/wp-content/uploads/2015/04/logo1.png" alt="Four Elements" height="146" width="500" style="border-style: none">
                     <aside class="notes"></aside>
 				</section>
@@ -377,8 +394,8 @@ tree #[content size]\0
 					<section>
 						<h2>The Commit</h2>
 						<ul>
-							<li>A commit captures the referance to the top level tree of the project at the time of commit/snapshot</li>
-							<li>It associates the referanced tree with the person who caused that tree to be created</li>
+							<li>A commit captures the reference to the top level tree of the project at the time of commit/snapshot</li>
+							<li>It associates the referenced tree with the person who caused that tree to be created</li>
 						</ul>
                         <aside class="notes"></aside>
 					</section>
@@ -508,7 +525,8 @@ Initial release version 0.1
 				</section>
 
 				<section>
-					<h2>Creating New Repository</h2>
+					<h2>Starting up</h2>
+					<h3>A New Repository</h3>
 <pre><code data-trim contenteditable>
 % git init
 </code></pre>
@@ -523,9 +541,10 @@ Initial release version 0.1
 
 				<section>
 				    <section>
-					    <h2>Collaborating On a Remote Repository</h2>
+					    <h2>Collaborating</h2>
+					    <h3>On a Remote Repository</h3>
 <pre><code data-trim contenteditable>
-% git clone remote_repo
+% git clone [url]
 </code></pre>
 					    <ul>
 						    <li>Clones an existing remote repository in a subdirectory of your current path</li>
@@ -582,7 +601,8 @@ Initial release version 0.1
 				</section>
 
 				<section>
-					<h2>The Index</h2>
+					<h2>Snapshotting</h2>
+					<h3>The Index</h3>
 <pre><code data-trim contenteditable>
 % git add -A
 </code></pre>
@@ -591,6 +611,18 @@ Initial release version 0.1
 						<li>Git takes a snapshot of your files when you add them to the <em>index</em></li>
 					</ul>
 					<aside class="notes">All git commands except <em>git status</em> will ignore files not in the index.</aside>
+				</section>
+
+				<section>
+					<h2>Checking</h2>
+					<h3>The Status</h3>
+<pre><code data-trim contenteditable>
+% git status
+</code></pre>
+					<ul>
+						<li>Tell the current branch and the state of your working directory</li>
+					</ul>
+					<aside class="notes"></aside>
 				</section>
 
 				<section>
@@ -656,6 +688,43 @@ Initial release version 0.1
 				    </section>
 				</section>
 
+			    <section>
+				    <section>
+					    <h2>Remotes</h2>
+					    <p>Communicating with the world</p>
+				        <ul>
+				            <li>Remotes are references to branches of your project in other repositories</li>
+				            <li>They are bookmarks that reflect the state of remote branches as seen during your last communication with that remote repository</li>
+				            <li>They are read only and a tracking local branch would get created if you checkout</li>
+				        </ul>
+					    <aside class="notes"></aside>
+				    </section>
+			    </section>
+
+			    <section>
+				    <h2>More Commands</h2>
+<pre><code data-trim contenteditable>
+% git log
+% git diff
+% git stash
+</code></pre>
+				    <aside class="notes"></aside>
+			    </section>
+
+			    <section>
+				    <h2>Sharing</h2>
+				    <h3>On Github</h3>
+				    <aside class="notes"></aside>
+			    </section>
+
+				<section>
+					<h2>Further References</h2>
+			        <ul>
+					    <li><a href="http://www.slideshare.net/chacon/getting-git?related=1">Getting Git</a> by Scott Chacon</li>
+					    <li><a href="https://git-scm.com/book/en/v2">Pro Git Second Edition</a> by Scott Chacon &amp; Ben Straub</li>
+			        </ul>
+					<aside class="notes"></aside>
+				</section>
 
 			</div>
 
