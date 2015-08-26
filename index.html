@@ -67,14 +67,14 @@
 				</section>
 
 				<section>
-					<h2>Why Are We Here?</h2>
+					<h2>Agenda</h2>
 					<ul>
 						<li>Why Version Control?</li>
 						<li>What is Git?</li>
 						<li>Why should I care?</li>
 						<li>How Git works?</li>
-						<li>How will it make my life better?</li>
-						<li>How I will improve the lives of my fellow code monkeys?</li>
+						<li>How will Git make my life better?</li>
+						<li>How I can improve the lives of my fellow code monkeys with Git?</li>
 					</ul>
                     <aside class="notes"></aside>
 				</section>
@@ -86,7 +86,13 @@
 						<li>Makes it trivial to share the codebase with other developers and collaborate</li>
 						<li>Supports multiple versions of code for different environments based on levels of testing &amp; confidence</li>
 					</ul>
-                    <aside class="notes">Multiple branches for DEV, UAT, and PROD environments</aside>
+                    <aside class="notes">
+                        <ul>
+                            <li>Ironically, most version control systems fail to provide the trivial sharing of code and introduce artificial limitations.</li>
+                            <li>This is the reason why people do not use VCS for personal projects.</li>
+                            <li>Multiple branches for DEV, UAT, and PROD environments</li>
+                        </ul>
+                    </aside>
 				</section>
 
 				<section>
@@ -132,7 +138,10 @@
 							</tr>
 						</tbody>
 					</table>
-                    <aside class="notes"></aside>
+                    <aside class="notes">
+                        <li>The commit and merge ordering is the key difference between distributed and centralized version control systems.</li>
+                        <li>Commit and Merging are two distinct concepts, however, only DVCS treat them as separate.</li>
+                    </aside>
 				</section>
 
 				<section>
@@ -150,9 +159,11 @@
 							<li>A Distributed/Decentralized shared repository of objects</li>
 							<li>It is open-source and free to use</li>
 							<li>Takes a unique and open design approach towards version control</li>
-							<li>The openness of its design sometimes confuses people make them think that it is too difficult</li>
+							<li>The openness of its design sometimes confuses people and make them think that it is too difficult</li>
 						</ul>
-                        <aside class="notes"></aside>
+                        <aside class="notes">It was developed by Linus Torvalds for maintaining the Linux Kernel source tree.
+                            It is the only software that he takes credit personally.
+                        </aside>
 					</section>
 				</section>
 				
@@ -162,8 +173,12 @@
                         <aside class="notes"></aside>
 				    </section>
 					<section>
-						<h2>Git is the Future</h2>
-						<p>Practically replaced SVN and other proprietary solutions</p>
+						<h2>Git is The Future</h2>
+						<ul>
+							<li>Practically replaced SVN and other proprietary solutions in both open source and proprietary systems.</li>
+							<li>Advanced code management and collaboration tools like Github, Travis CI, &amp; AWS</li>
+							<li>Ready for <q cite="">&ldquo;Cloud Development&rdquo;</q></li>
+						</ul>
                         <aside class="notes"></aside>
 				    </section>
 					<section>
@@ -174,6 +189,7 @@
 							<li>add</li>
 							<li>commit</li>
 							<li>branch</li>
+							<li>merge</li>
 							<li>log</li>
 						</ul>
                         <aside class="notes"></aside>
@@ -189,7 +205,7 @@
 					<section>
 						<h2>The All Seeing Eye!</h2>
 						<ul>
-							<li>Nothing Gets Past its Watch!</li>
+							<li>Nothing gets past its watch!</li>
 							<li>Extreme safeguards against on-disk data corruption</li>
 							<li>Everyone has a copy of everything, less chance of accidental data loss</li>
 							<li>Cryptographically immutable, makes malicious file tempering impossible without detection</li>
@@ -203,8 +219,8 @@
 					<section>
 						<h2>Loves Branches</h2>
 						<ul>
-							<li>Branches are very cheap (in computational sense).</li>
-							<li>Git can handle complex merges.</li>
+							<li>Branches are very cheap (in computational sense)</li>
+							<li>Git can handle merges automatically</li>
 						</ul>
                         <aside class="notes"></aside>
 					</section>
@@ -242,6 +258,7 @@
 					    <ul>
 						    <li>A content addressable file system</li>
 						    <li>160-bit SHA1 hash computed from the contents of the given file</li>
+						    <li><q>address = SHA1(header + content)</q></li>
 					    </ul>
 <pre><code data-trim contenteditable>
 % git hash-object App.scala
@@ -295,7 +312,12 @@ drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 03:56 refs
 				<section>
 					<h2>Storage Models</h2>
 					<img src="drawings/storage-models-ink.svg" alt="Storage Models" height="600" width="900" style="border-style: none">
-                    <aside class="notes"></aside>
+                    <aside class="notes">
+						<ul>
+							<li>Delta storage is file oriented model.</li>
+							<li>Renaming a file causes a system-wide panic in Delta storage based systems.</li>
+						</ul>
+                    </aside>
 				</section>
 
 				<section>
@@ -335,12 +357,17 @@ drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 03:56 refs
 							<li>Moving, renaming file has no effect on its blob (SHA1)</li>
 							<li>Conceptually it is similar to a UNIX inode, simplified</li>
 						</ul>
-                        <aside class="notes"></aside>
+                        <aside class="notes">
+						    <ul>
+							    <li>Blob is just a file minus its name and plus the header.</li>
+							    <li>No support for extended file attributes.</li>
+						    </ul>
+                        </aside>
 					</section>
 					<section>
 						<h2>Blob Example</h2>
 						<img src="drawings/blob-ink.svg" alt="Blob Example" height="500" width="500" style="border-style: none">
-                        <aside class="notes"></aside>
+                        <aside class="notes">The drawing is a little inaccurate as the blob does not store the names.</aside>
 					</section>
 					<section>
 						<h2>Inside a Blob Object</h2>
