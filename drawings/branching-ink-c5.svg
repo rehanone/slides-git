@@ -15,7 +15,7 @@
    id="svg3459"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="branching-ink-checkout-cool-idea.svg">
+   sodipodi:docname="branching-ink-c5.svg">
   <defs
      id="defs3461">
     <marker
@@ -334,7 +334,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.23"
-     inkscape:cx="480.67637"
+     inkscape:cx="360.35117"
      inkscape:cy="284.72868"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
@@ -434,7 +434,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -445,7 +445,7 @@
      style="display:inline"
      transform="translate(0,-100)">
     <g
-       id="g16328">
+       id="g4555">
       <g
          id="g8486"
          transform="translate(36,-194.36222)">
@@ -681,7 +681,7 @@
       <path
          sodipodi:nodetypes="cc"
          style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker9558)"
-         d="m 300.4535,360.02766 120.1706,-0.60917"
+         d="m 423.12769,360.02766 -120.1706,-0.60917"
          id="path9556"
          inkscape:connector-curvature="0" />
       <g
