@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  node:
+    container_name: 'slides-git'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    restart: unless-stopped
+

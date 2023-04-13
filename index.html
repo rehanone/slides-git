@@ -3,12 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="description" content="An introduction to git and Github for code collaboration and increased productivity">
+        <meta name="author" content="Rehan Mahmood">
 
-		<title>reveal.js</title>
+		<title>Git - The Smart Way to Manage Code</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/simple.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -16,8 +18,856 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Getting Smart with Git</h1>
+					<p>
+						<small>by <a href="mailto:slides-git@rehan.appaddy.uk">Rehan Mahmood</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Who Am I?</h2>
+						<h4>Rehan Mahmood</h4>
+						<img width="600" height="400" data-src="pictures/me.jpg" alt="Me" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Background with Git</h2>
+						<ul>
+							<li>Started tracking development of Mozilla Firefox as a student</li>
+							<li>Started using Mercurial when Firefox switched to it in 2006</li>
+							<li>Learned Git and Mercurial as the debate about VCS of choice for The Kernel project started
+								heating up
+							</li>
+							<li>Backed Mercurial over Git for long time</li>
+							<li>Finally switched to Git in 2010 because of Git's superior handling of tags</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Why Version Control?</li>
+						<li>What is Git?</li>
+						<li>Why should I care?</li>
+						<li>How Git works?</li>
+						<li>How will Git make my life better?</li>
+						<li>How I can improve the lives of my fellow code monkeys with Git?</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Why Version Control?</h2>
+					<ul>
+						<li>Allows you to iterate over your code while keeping checkpoints to roll back</li>
+						<li>Makes it trivial to share the codebase with other developers and collaborate</li>
+						<li>Supports multiple versions of code for different environments based on levels of testing &amp;
+							confidence
+						</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Ironically, most version control systems fail to provide the trivial sharing of code and
+								introduce artificial limitations.
+							</li>
+							<li>This is the reason why people do not use VCS for personal projects.</li>
+							<li>Multiple branches for DEV, UAT, and PROD environments</li>
+						</ul>
+					</aside>
+				</section>
+		
+				<section>
+					<h2>Version Control Systems</h2>
+					<table summary="Three Generations of Version Control" border="1">
+						<colgroup>
+							<col align="center">
+							<col align="center">
+							<col align="center">
+							<col align="center">
+							<col align="center">
+						</colgroup>
+						<thead valign="middle">
+						<tr>
+							<th align="center" valign="middle">Generation</th>
+							<th align="center" valign="middle">Networking</th>
+							<th align="center" valign="middle">Operations</th>
+							<th align="center" valign="middle">Concurrency</th>
+							<th align="center" valign="middle">Examples</th>
+						</tr>
+						</thead>
+						<tbody valign="middle">
+						<tr>
+							<td align="center" valign="middle">First</td>
+							<td align="center" valign="middle">None</td>
+							<td align="center" valign="middle">One file at a time</td>
+							<td align="center" valign="middle">Locks</td>
+							<td align="center" valign="middle">RCS, SCCS</td>
+						</tr>
+						<tr>
+							<td align="center" valign="middle">Second</td>
+							<td align="center" valign="middle">Centralized</td>
+							<td align="center" valign="middle">Multi-file</td>
+							<td align="center" valign="middle" class="fragment highlight-red">Merge before commit</td>
+							<td align="center" valign="middle">CVS, Subversion, Perforce</td>
+						</tr>
+						<tr>
+							<td align="center" valign="middle">Third</td>
+							<td align="center" valign="middle">Distributed</td>
+							<td align="center" valign="middle">Changesets</td>
+							<td align="center" valign="middle" class="fragment highlight-blue">Commit before merge</td>
+							<td align="center" valign="middle">Bazaar, Git, Mercurial</td>
+						</tr>
+						</tbody>
+					</table>
+					<aside class="notes">
+						<li>The commit and merge ordering is the key difference between distributed and centralized version
+							control systems.
+						</li>
+						<li>Commit and Merging are two distinct concepts, however, only DVCS treat them as separate.</li>
+					</aside>
+				</section>
+		
+				<section>
+					<section>
+						<h2>What is Git?</h2>
+						<blockquote
+								cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+							&ldquo;Git is fundamentally a content-addressable filesystem with a VCS user interface written on
+							top of it.&rdquo;
+						</blockquote>
+						<small>Pro Git, Section: Git Internals</small>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>What is Git?</h2>
+						<ul>
+							<li>A Distributed/Decentralized shared repository of objects</li>
+							<li>It is open-source and free to use</li>
+							<li>Takes a unique and open design approach towards version control</li>
+							<li>The openness of its design sometimes confuses people and make them think that it is too
+								difficult
+							</li>
+						</ul>
+						<aside class="notes">It was developed by Linus Torvalds for maintaining the Linux Kernel source tree.
+							It is the only software that he takes credit personally.
+						</aside>
+					</section>
+				</section>
+		
+				<section>
+					<section>
+						<h2>Why Git?</h2>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Git is The Future</h2>
+						<ul>
+							<li>Practically replaced SVN and other proprietary solutions in both open source and proprietary
+								systems.
+							</li>
+							<li>Advanced code management and collaboration tools like Github, Travis CI, &amp; AWS</li>
+							<li>Ready for <q cite="">Cloud Development</q></li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Everything is Local!</h2>
+						<p>Every operation is local, until you are ready to go public!</p>
+						<ul>
+							<li>init</li>
+							<li>add</li>
+							<li>commit</li>
+							<li>branch</li>
+							<li>merge</li>
+							<li>log</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Git is Speed!</h2>
+						<ul>
+							<li>Git is orders of magnitude faster than other version control systems</li>
+							<li>It is built for speed</li>
+						</ul>
+						<aside class="notes">The speedy operations of git are partly because of their local nature</aside>
+					</section>
+					<section>
+						<h2>The All Seeing Eye!</h2>
+						<ul>
+							<li>Nothing gets past its watch!</li>
+							<li>Extreme safeguards against on-disk data corruption</li>
+							<li>Everyone has a copy of everything, less chance of accidental data loss</li>
+							<li>Cryptographically immutable, makes malicious file tempering impossible without detection</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Protection for unreliable file system and disk issues like bit rot, phantom writes, physical
+									disk and controller integrity issues
+								</li>
+							</ul
+						</aside>
+					</section>
+					<section>
+						<h2>Loves Branches</h2>
+						<ul>
+							<li>Branches are very cheap (in computational sense)</li>
+							<li>Git can handle merges automatically</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>It is Flexable</h2>
+						<ul>
+							<li>Can support complex, non-liner development that more accurately reflects the real world.</li>
+							<li>Git can handle as many development models as you can come-up with.</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Unmatched Scalability</h2>
+						<ul>
+							<li>Extremely scalable from personal use to thousands of developers</li>
+							<li>Used by <a href="https://github.com/torvalds/linux">The Kernel Project</a> since 2005, 534780
+								commits,
+								5277 commiters<sup>*</sup> and counting
+							</li>
+						</ul>
+						<br/>
+						<br/>
+						<small>Checked: August 8, 2015</small>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<h2>How Git Works</h2>
+					<p>A quick deep dive inside Git's mind</p>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<section>
+						<h2>Everything is a Hash</h2>
+						<ul>
+							<li>A content addressable file system</li>
+							<li>160-bit SHA1 hash computed from the contents of the given file</li>
+							<li><q>address = SHA1(header + content)</q></li>
+						</ul>
+						<pre><code data-trim contenteditable>
+		% git hash-object App.scala
+		545323645634654365436453646754746
+		
+		% ls -al hello-git/.git/objects/54
+		drwxrwxr-x 7 ubuntu ubuntu 4096 Aug 19 03:56 .
+		drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 04:22 ..
+		-rw-rw-r-- 1 ubuntu ubuntu   92 Aug 19 03:56 5323645634654365436453646754746
+		</code></pre>
+						<aside class="notes">Content of the file determines its address in the object store</aside>
+					</section>
+		
+					<section>
+						<h2>Working Directory</h2>
+						<pre><code data-trim contenteditable>
+		% ls -al hello-git/
+		total 16
+		drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 04:22 .
+		drwxr-xr-x 9 ubuntu ubuntu 4096 Aug 19 03:53 ..
+		drwxrwxr-x 7 ubuntu ubuntu 4096 Aug 19 03:56 .git
+		-rw-rw-r-- 1 ubuntu ubuntu  321 Aug 19 04:22 .gitignore
+		-rw-rw-r-- 1 ubuntu ubuntu 5430 Aug 19 04:22 build.sbt
+		-rw-rw-r-- 1 ubuntu ubuntu 4330 Aug 19 04:22 README.md
+		drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 04:22 src
+		drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 04:22 target
+		</code></pre>
+						<aside class="notes"></aside>
+					</section>
+		
+					<section>
+						<h2>Git Under the Hood</h2>
+						<p>GIT_DIR</p>
+						<pre><code data-trim contenteditable>
+		% ls -al hello-git/.git/
+		drwxrwxr-x 7 ubuntu ubuntu 4096 Aug 19 03:56 .
+		drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 04:22 ..
+		drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 03:56 branches
+		-rw-rw-r-- 1 ubuntu ubuntu   92 Aug 19 03:56 config
+		-rw-rw-r-- 1 ubuntu ubuntu   73 Aug 19 03:56 description
+		-rw-rw-r-- 1 ubuntu ubuntu   23 Aug 19 03:56 HEAD
+		drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 03:56 hooks
+		drwxrwxr-x 2 ubuntu ubuntu 4096 Aug 19 03:56 info
+		drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 03:56 objects
+		drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 19 03:56 refs
+		</code></pre>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<h2>Storage Models</h2>
+					<img src="drawings/storage-models-ink.svg" alt="Storage Models" height="600" width="900"
+						 style="border-style: none">
+					<aside class="notes">
+						<ul>
+							<li>Delta storage is file oriented model.</li>
+							<li>Renaming a file causes a system-wide panic in Delta storage based systems.</li>
+						</ul>
+					</aside>
+				</section>
+		
+				<section>
+					<h2>The Four Elements</h2>
+					<p>Air, Water, Fire &amp; Earth of Git</p>
+					<img class="fragment" src="drawings/git-internal-types-ink.svg" alt="Git Internals" height="400" width="600"
+						 style="border-style: none">
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Example Project Tree</h2>
+					<pre><code data-trim contenteditable>
+		% tree hello-git/
+		.
+		├── build.sbt
+		├── README.md
+		└── src
+			└── main
+				└── scala
+					└── App.scala
+		</code></pre>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<section>
+						<h2>The Blob</h2>
+						<ul>
+							<li>Every file is a blob</li>
+							<li>File content is the focus, NOT its name</li>
+							<li>Even a single bit change in the file will make it a new blob</li>
+							<li>Moving, renaming file has no effect on its blob (SHA1)</li>
+							<li>Conceptually it is similar to a UNIX inode, simplified</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Blob is just a file minus its name and plus the header.</li>
+								<li>No support for extended file attributes.</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Blob Example</h2>
+						<img src="drawings/blob-ink.svg" alt="Blob Example" height="500" width="500" style="border-style: none">
+						<aside class="notes">The drawing is a little inaccurate as the blob does not store the names.</aside>
+					</section>
+					<section>
+						<h2>Inside a Blob Object</h2>
+						<pre><code data-trim contenteditable>
+		blob #[content size]\0
+		
+		object HelloWorld {
+			def main(args: Array[String]) {
+				  println("Hello, world!")
+			}
+		}
+		</code></pre>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<section>
+						<h2>The Tree</h2>
+						<ul>
+							<li>A tree captures the snapshot of a single directory at a given point in time</li>
+							<li>It is just a file with references of its contents in the object store</li>
+							<li>Conceptually it is similar to a UNIX directory</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Tree Example</h2>
+						<img src="drawings/tree-ink.svg" alt="Tree Example" height="500" width="500" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Inside a Tree Object</h2>
+						<pre><code data-trim contenteditable>
+		tree #[content size]\0
+		
+		100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391    README.md
+		100644 blob d8329fc1cc938780ffdd9f94e0d364e0ea74f579    build.sbt
+		040000 tree 73ddadc5a62d245db87fea379e015eeb3b04fd30    src
+		</code></pre>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>The Tree Model</h2>
+						<img src="drawings/tree-model-ink.svg" alt="Tree Model" height="500" width="500"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<section>
+						<h2>The Commit</h2>
+						<ul>
+							<li>A commit captures the reference to the top level tree of the project at the time of
+								commit/snapshot
+							</li>
+							<li>It associates the referenced tree with the person who caused that tree to be created</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>The Commit Model</h2>
+						<img src="drawings/commit-model-ink.svg" alt="Commit Model" height="650" width="500"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Inside a Commit Object</h2>
+						<pre><code data-trim contenteditable>
+		commit #[content size]\0
+		
+		tree      d8329fc1cc938780ffdd9f94e0d364e0ea74f579
+		parant    73ddadc5a62d245db87fea379e015eeb3b04fd30
+		author    Rehan Mahmood&lt;rehan.mahmood@bjss.com&gt;  1243040974 -0700
+		committer Rehan Mahmood&lt;rehan.mahmood@bjss.com&gt;  1243040974 -0700
+		
+		My Second commit.
+		</code></pre>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<section>
+						<h2>The Tag</h2>
+						<ul>
+							<li>A tag provides a way to referance a perticular commit/snapshot object by a name</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>The Tag Model</h2>
+						<img src="drawings/tag-model-ink.svg" alt="Tag Model" height="600" width="600"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Inside a Tag Object</h2>
+						<pre><code data-trim contenteditable>
+		tag #[content size]\0
+		
+		object    73ddadc5a62d245db87fea379e015eeb3b04fd30
+		type      commit
+		tag       0.1
+		tagger    Rehan Mahmood&lt;rehan.mahmood@bjss.com&gt;  1243040974 -0700
+		
+		Initial release version 0.1
+		</code></pre>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<h2>The Git Object Model</h2>
+					<img src="drawings/git-object-model-ink.svg" alt="The Git Object Model" height="500" width="300"
+						 style="border-style: none">
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Git References</h2>
+					<ul>
+						<li>Lightweight, movable pointers to commit objects</li>
+						<li>Just plain files stored in .git/refs/*</li>
+						<li>Not part of the object store</li>
+						<li>Provide the base for the Git branching model</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Object Model &amp; References</h2>
+					<img src="drawings/git-object-model-and-refs-ink.svg" alt="The Object Model and References" height="600"
+						 width="700" style="border-style: none">
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>The HEAD</h2>
+					<ul>
+						<li>HEAD is a spacial file that records the reference to the of your current branch</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<section>
+						<h2>Commits in Play</h2>
+						<p>How Commits Build the Git Version Tree</p>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-a.svg" alt="Commits in Play Example - Commit A" height="750"
+							 width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-a-change.svg" alt="Commits in Play Example - Commit A Change"
+							 height="750" width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-b.svg" alt="Commits in Play Example - Commit B" height="750"
+							 width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-b-change.svg" alt="Commits in Play Example - Commit B Change"
+							 height="750" width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-c.svg" alt="Commits in Play Example - Commit C" height="750"
+							 width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-all.svg" alt="Commits in Play Example - All Commits" height="750"
+							 width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-all-filter-a.svg" alt="Commits in Play Example - Filter A"
+							 height="750" width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-all-filter-b.svg" alt="Commits in Play Example - Filter B"
+							 height="750" width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/commits-in-play-ink-all-filter-c.svg" alt="Commits in Play Example - Filter C"
+							 height="750" width="1350" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<h2>Starting up</h2>
+					<h3>A New Repository</h3>
+					<pre><code data-trim contenteditable>
+		% git init
+		</code></pre>
+					<ul>
+						<li>Creates a new git repository in the current directory named <em>.git</em></li>
+						<li>You can create an optional ignore file named <em>.gitignore</em></li>
+						<li>Sets up a branch called <em>master</em></li>
+						<li>The name <em>master</em> is just convention, it could be changed or deleted like any other branch
+						</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<section>
+						<h2>Collaborating</h2>
+						<h3>On a Remote Repository</h3>
+						<pre><code data-trim contenteditable>
+		% git clone [url]
+		</code></pre>
+						<ul>
+							<li>Clones an existing remote repository in a subdirectory of your current path</li>
+							<li>The remote repository could be just another directory in your local file system.</li>
+							<li>The remote repository is identified as <em>origin</em></li>
+							<li>The name <em>origin</em> is just a convention</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<table summary="Git Protocols" border="1">
+							<colgroup>
+								<col align="center">
+								<col align="center">
+								<col align="center">
+							</colgroup>
+							<thead valign="middle">
+							<tr>
+								<th align="center" valign="middle">Protocol</th>
+								<th align="center" valign="middle">Remote</th>
+								<th align="center" valign="middle">Operations</th>
+								<th align="center" valign="middle">Authentication</th>
+							</tr>
+							</thead>
+							<tbody valign="middle">
+							<tr>
+								<td align="center" valign="middle">local</td>
+								<td align="center" valign="middle">/path/to/some/repo.git</td>
+								<td align="center" valign="middle">pull/push</td>
+								<td align="center" valign="middle">no</td>
+							</tr>
+							<tr>
+								<td align="center" valign="middle">http</td>
+								<td align="center" valign="middle">https://github.com/zfsonlinux/zfs.git</td>
+								<td align="center" valign="middle">pull</td>
+								<td align="center" valign="middle">yes</td>
+							</tr>
+							<tr>
+								<td align="center" valign="middle">ssh</td>
+								<td align="center" valign="middle">ssh://github.com/zfsonlinux/zfs.git</td>
+								<td align="center" valign="middle">pull/push</td>
+								<td align="center" valign="middle">yes</td>
+							</tr>
+							<tr>
+								<td align="center" valign="middle">git</td>
+								<td align="center" valign="middle">git://example.com/awesome.git</td>
+								<td align="center" valign="middle">pull/push</td>
+								<td align="center" valign="middle">no</td>
+							</tr>
+							</tbody>
+						</table>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<h2>Snapshotting</h2>
+					<h3>The Index</h3>
+					<pre><code data-trim contenteditable>
+		% git add -A
+		</code></pre>
+					<ul>
+						<li>All git commands work on set files in git <em>index</em> or <em>staging area</em></li>
+						<li>Git takes a snapshot of your files when you add them to the <em>index</em></li>
+					</ul>
+					<aside class="notes">All git commands except <em>git status</em> will ignore files not in the index.</aside>
+				</section>
+		
+				<section>
+					<h2>Checking</h2>
+					<h3>The Status</h3>
+					<pre><code data-trim contenteditable>
+		% git status
+		</code></pre>
+					<ul>
+						<li>Tell the current branch and the state of your working directory</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Committing</h2>
+					<pre><code data-trim contenteditable>
+		% git commit
+		</code></pre>
+					<ul>
+						<li>Commits the snapshot captured by your <em>index</em> to the <em>HEAD</em></li>
+						<li>Launch your default editor asking for your commit message</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<section>
+						<h2>Branching &amp; Merging</h2>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<img src="drawings/branching-ink-c1.svg" alt="Barnching Example - Commit C1" height="650" width="1000"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git checkout -b cool-idea</p>
+						<img src="drawings/branching-ink-c1-cool-idea.svg" alt="Barnching Example - Checkout cool-idea"
+							 height="650" width="1000" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git commit</p>
+						<img src="drawings/branching-ink-c2.svg" alt="Barnching Example - Commit C2" height="650" width="1000"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git commit</p>
+						<img src="drawings/branching-ink-c3.svg" alt="Barnching Example - Commit C3" height="650" width="1000"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git checkout master</p>
+						<img src="drawings/branching-ink-checkout-master.svg" alt="Barnching Example - Checkout master"
+							 height="650" width="1000" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git commit</p>
+						<img src="drawings/branching-ink-c4.svg" alt="Barnching Example - Commit C4" height="650" width="1000"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git tag -a 'v0.1'</p>
+						<img src="drawings/branching-ink-tag.svg" alt="Barnching Example - Tag" height="650" width="1000"
+							 style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git checkout cool-idea &amp; git commit</p>
+						<img src="drawings/branching-ink-c5.svg" alt="Barnching Example - Checkout cool-idea" height="650"
+							 width="1000" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<p>git checkout master &amp; git merge cool-idea</p>
+						<img src="drawings/branching-ink-c6-merge.svg" alt="Barnching Example - Merge master" height="650"
+							 width="1000" style="border-style: none">
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<section>
+						<h2>Remotes</h2>
+						<p>Communicating with the world</p>
+						<ul>
+							<li>Remotes are references to branches of your project in other repositories</li>
+							<li>They are bookmarks that reflect the state of remote branches as seen during your last
+								communication with that remote repository
+							</li>
+							<li>They are read only and a tracking local branch would get created if you checkout</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+		
+				<section>
+					<h2>Git Workflow</h2>
+					<img src="drawings/git-workflow.svg" alt="Git Workflow" height="500" width="500" style="border-style: none">
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>More Commands</h2>
+					<pre><code data-trim contenteditable>
+		% git log
+		% git diff
+		% git stash
+		</code></pre>
+					<aside class="notes"></aside>
+				</section>
+		
+		
+				<section>
+					<h2>Social Coding</h2>
+					<h3>Hanging out with Cool Kids :)</h3>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Github</h2>
+					<ul>
+						<li>It is a hosting service for your Git repository but with lots of bells &amp; whistles</li>
+						<li>Github provides a web interface to your Git repository</li>
+						<li>It provides many collaboration tools like wikis, basic bug tracking, and release management</li>
+						<li>It is free for open and public access projects, you have to pay for private access</li>
+						<li>Companies can deploy in-house private instance called Github Enterprise</li>
+						<li>It is like facebook for developers</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Pull Request</h2>
+					<ul>
+						<li>Allows you to announce to all interested parties that you are proposing a change to the project
+							code
+						</li>
+						<li>Let others review, discuses, and comment on your proposed modifications</li>
+						<li>Lets you and others send improvements by pushing follow up commits</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Forking</h2>
+					<ul>
+						<li>A fork is your personal <em>clone</em> of someone else's repository on Github</li>
+						<li>Lets you contribute to project on which you don't have push access</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Collaboration Models</h2>
+					<h3>On Github</h3>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Fork &amp; Pull</h2>
+					<ul>
+						<li>Lets anyone fork an existing repository and push changes to their personal fork</li>
+						<li>No push access required on source repository</li>
+						<li>Less friction for new contributors joining the project</li>
+						<li>Very popular in open source projects and large scale projects</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Shared Repository</h2>
+					<ul>
+						<li>All contributors must be explicit granted push access</li>
+						<li>Mostly used in small teams and private projects</li>
+						<li>Uses feature and topic branches for change isolation and promotion</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Git in Action</h2>
+					<h3>Demo</h3>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Thank you!</h2>
+					<h3>Question?</h3>
+					<p>If you have any suggestions for improving this presentation, please fork it @Github</p>
+					<p><a href="https://github.com/rehanone/slides-git">https://github.com/rehanone/slides-git</a></p>
+					<p>and submit a pull request</p>
+					<aside class="notes"></aside>
+				</section>
+		
+				<section>
+					<h2>Further References</h2>
+					<p>Official Git site</p>
+					<a href="http://git-scm.com">http://git-scm.com</a>
+					<br/>
+					<p>Books</p>
+					<p><a href="https://git-scm.com/book/en/v2">Pro Git Second Edition</a> by Scott Chacon &amp; Ben Straub</p>
+					<br/>
+					<p>Slides</p>
+					<ul>
+						<li><a href="http://www.slideshare.net/chacon/getting-git?related=1">Getting Git</a> by Scott Chacon
+						</li>
+						<li><a href="http://www.slideshare.net/nicotourne/starting-with-git-git-hub-27464735">Starting with Git
+							&amp; GitHub</a> by Nicolás Tourné
+						</li>
+					</ul>
+					<aside class="notes"></aside>
+				</section>
+
 			</div>
 		</div>
 
@@ -38,3 +888,4 @@
 		</script>
 	</body>
 </html>
+
